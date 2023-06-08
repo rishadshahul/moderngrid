@@ -1,0 +1,58 @@
+<!-- Button trigger modal -->
+<div style="text-align: center; margin-top: 20px;">
+<button (click)="addClick()" type="button"  class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static"
+data-keyboard="false">
+    Add student
+  </button>
+</div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="background-color: rgba(0, 0, 0, 0.61);">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{ModalTitle}}</h1>
+          <button type="button" (click)="closeClick()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit [stud]="stud" *ngIf="ActivateAddEditStud"></app-add-edit>
+        </div>
+        <div class="modal-footer">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div style="margin-top: 50px;">
+    <table class="table table-striped" style="text-align: center;">
+        <thead>
+            <tr>
+            <th>STUDENT ID</th>
+            <th>NAME</th>
+            <th>AGE</th>
+            <th>PLACE</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let d of StudentList">
+            
+                <td>{{d.studentID}}</td>
+                <td>{{d.studentName}}</td>
+                <td>{{d.age}}</td>
+                <td>{{d.place}}</td>
+
+                <td>
+                  <button  type="button"  class="btn btn-outline-primary" data-bs-toggle="modal"
+                   data-bs-target="#exampleModal" data-backdrop="static"
+                  data-keyboard="false" (click)="editClick(d)" >Edit</button>&nbsp;
+
+                  <button type="button" class="btn btn-outline-primary" (click)="deleteClick(d)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
